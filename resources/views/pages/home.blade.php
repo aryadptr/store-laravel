@@ -6,10 +6,26 @@
 
 @section('content')
     <div class="page-content page-home">
-        <section class="store-carousel">
-            <div class="container">
+        <section class="store-header">
+            <div class="container" data-aos="zoom-in">
                 <div class="row">
-                    <div class="col-lg-12" data-aos="zoom-in">
+                    <div class="col-12 col-lg-6 align-self-center">
+                        <h3 class="header-title">Welcome to <br /><b> Store E-Commerce </b></h3>
+                        <div class="header-subtitle">
+                            Store E-Commerce is an e-commerce store that sells various products that have been integrated
+                            with
+                            midtrans as a payment gateway
+                        </div>
+                        <a href="#store-new-products" class="btn btn-success btn-cta">Shopping</a>
+                    </div>
+                    <div class="col-12 col-lg-6 text-center d-none d-sm-block">
+                        <img src="{{ asset('images/header.png') }}"
+                            style="height: 400px; border-radius: 60px 0px 60px 0px" alt="" srcset="" />
+                    </div>
+
+                    {{-- Carousel --}}
+
+                    {{-- <div class="col-lg-12" data-aos="zoom-in">
                         <div id="storeCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li class="active" data-target="#storeCarousel" data-slide-to="0"></li>
@@ -28,7 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -60,7 +76,7 @@
                 </div>
             </div>
         </section>
-        <section class="store-new-products">
+        <section class="store-new-products" id="store-new-products">
             <div class="container">
                 <div class="row">
                     <div class="col-12" data-aos="fade-up">
@@ -75,24 +91,30 @@
                             <a href="{{ route('detail', $product->slug) }}" class="component-products d-block">
                                 <div class="products-thumbnail">
                                     <div class="products-image" style="
-                                      @if ($product->galleries) background-image:
+                                                                                                                                                                    
+                                                                                                                          
+                                                                           @if ($product->
+                                        galleries)
+                                        background-image:
                                         url('{{ Storage::url($product->galleries->first()->photo) }}');
                                     @else
-                                        background-color: #eee; @endif
-                                        "
-                                        ></div>
-                                </div>
-                                <div class="products-text">{{ $product->name }}</div>
-                                <div class="products-price">IDR {{ number_format($product->price, 0, ',', '.') }}</div>
-                            </a>
-                        </div>
-                    @empty
-                        <div class="col-12 py-5 tex-center" data-aos="fade-up" data-aos-delay="100">
-                            No Products Found
-                        </div>
-                    @endforelse
+                                        background-color: #eee;
+                    @endif
+                    "
+                    >
                 </div>
             </div>
-        </section>
+            <div class="products-text">{{ $product->name }}</div>
+            <div class="products-price">IDR {{ number_format($product->price, 0, ',', '.') }}</div>
+            </a>
+    </div>
+@empty
+    <div class="col-12 py-5 tex-center" data-aos="fade-up" data-aos-delay="100">
+        No Products Found
+    </div>
+    @endforelse
+    </div>
+    </div>
+    </section>
     </div>
 @endsection
